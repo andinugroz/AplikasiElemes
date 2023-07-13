@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main}"
+>
+  <body>
+    <!-- content -->
+    <section layout:fragment="content">
+      <div id="main-content">
+        <div class="page-heading">
+          <div class="page-title mb-3">
+            <div class="row">
+              <div
+                class="col-12 col-md-6 order-md-1 order-last d-flex align-items-center"
+              >
+                <a class="btn" href="javascript:history.back()"
+                  ><i class="fa-solid fa-chevron-left fs-4"></i
+                ></a>
+                <h3 class="class-name"></h3>
+                <input type="hidden" th:value="*{class_id}" id="class_id" />
+              </div>
+              <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav
+                  aria-label="breadcrumb"
+                  class="breadcrumb-header float-start float-lg-end"
+                >
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="index.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                      <a th:href="@{/trainer/classeoom/trainer}">Class</a>
+                    </li>
+                    <li
+                      class="breadcrumb-item active"
+                      id="name-class"
+                      aria-current="page"
+                    ></li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <section class="section">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="container"></div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="card">
+                  <div class="card-header">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <a
+                          class="nav-link active"
+                          id="home-tab"
+                          data-bs-toggle="tab"
+                          href="#trainee"
+                          role="tab"
+                          aria-controls="home"
+                          aria-selected="true"
+                          >Trainee</a
+                        >
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a
+                          class="nav-link"
+                          id="profile-tab"
+                          data-bs-toggle="tab"
+                          href="#task"
+                          role="tab"
+                          aria-controls="profile"
+                          aria-selected="false"
+                          tabindex="-1"
+                          >Task</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <div class="tab-content" id="myTab">
+                      <div
+                        class="tab-pane fade active show"
+                        id="trainee"
+                        role="tabpanel"
+                        aria-labelledby="trainee-tab"
+                      >
+                        <table
+                          class="table display table-stripped table-bordered mt-3 text-center border border-rounded rounded-2"
+                          id="table-trainee"
+                        >
+                          <thead class="table">
+                            <tr>
+                              <th class="col-1 text-center">No.</th>
+                              <th class="col-1 text-center">Name</th>
+                            </tr>
+                          </thead>
+                        </table>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="task"
+                        role="tabpanel"
+                        aria-labelledby="task-tab"
+                      >
+                        <table
+                          class="table display table-stripped table-bordered mt-3 text-center border border-rounded rounded-2"
+                          id="table-task"
+                          style="width: 100%"
+                        >
+                          <thead class="table">
+                            <tr>
+                              <th class="col-1 text-center">No.</th>
+                              <th class="col-2 text-center">Name</th>
+                              <th class="col-3 text-center">Deadline</th>
+                              <th class="col-2 text-center">Segment</th>
+                            </tr>
+                          </thead>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Add topic to segment -->
+      <div
+        class="modal fade"
+        id="addTopicSegment"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="addTopicSegmentLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 fw-bold" id="addTopicSegmentLabel">
+                Add Topic To This Segment
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <input type="number" id="segment_id" hidden />
+                <label for="start_date" class="form-label fw-bold"
+                  >Start Date</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  id="create_ts_start_date"
+                />
+                <label for="name" class="form-label fw-bold">End Date</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="create_ts_end_date"
+                />
+                <label for="topic" class="form-label fw-bold">Topic</label>
+                <select
+                  class="form-control form-control-sm select_topic p-2"
+                  aria-label="form-select-sm example"
+                  id="select_topic"
+                >
+                  <option selected value="">Choose Topic</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary" onclick="create()">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div layout:fragment="script">
+      <script th:src="@{/assets/js/trainer/detailClass.js}"></script>
+    </div>
+  </body>
+</html>

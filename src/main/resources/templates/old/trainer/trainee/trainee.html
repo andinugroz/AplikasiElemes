@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main}"
+>
+  <body>
+    <!-- content -->
+    <section layout:fragment="content">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card shadow-lg" style="border-radius: 20px">
+            <div class="card-body">
+              <div
+                class="card-header d-flex justify-content-between"
+                style="background-color: white"
+              >
+                <div
+                  class="card-header-left d-flex flex-row align-items-center"
+                >
+                  <i
+                    class="fa-solid fa-user-graduate px-2"
+                    style="font-size: 36px; color: #7978e9"
+                  ></i>
+                  <h5 class="card-title mt-2" style="font-size: 24px">
+                    Trainee
+                  </h5>
+                  <input type="hidden" th:value="*{id}" id="class_id" />
+                </div>
+                <div
+                  class="card-header-left d-flex flex-row align-items-center"
+                >
+                  <button class="btn btn-secondary" onclick="history.back()">Back</button>
+                </div>
+                
+              </div>
+              <div class="card-content d-flex flex-column pt-2">
+                <!-- Loop through segments from the database -->
+                <table
+                  class="table display table-stripped table-bordered mt-3 text-center pt-2"
+                  id="table-trainee"
+                >
+                  <input type="hidden" id="class_id" th:value="${id}">
+                  <thead class="table-dark">
+                    <tr>
+                      <th class="col-1 text-center">No.</th>
+                      <th class="col-4 text-center">Name</th>
+                      <th class="col-2 text-center">phone</th>
+                      <th class="col-2 text-center">Program</th>
+                      <th class="col-4 text-center">Status</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div layout:fragment="script">
+      <script th:src="@{/js/trainer/trainee.js}"></script>
+    </div>
+  </body>
+</html>

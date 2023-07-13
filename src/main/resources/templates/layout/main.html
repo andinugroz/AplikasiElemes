@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <title th:text="${link}"></title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" th:href="@{/assets/css/bootstrap.css}" /> -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" th:href="@{/assets/vendors/iconly/bold.css}" />
+
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/vendors/perfect-scrollbar/perfect-scrollbar.css}"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/vendors/bootstrap-icons/bootstrap-icons.css}"
+    />
+    <link rel="stylesheet" th:href="@{/assets/css/app.css}" />
+    <link
+      rel="shortcut icon"
+      th:href="@{/assets/images/favicon.svg}"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" th:href="@{/assets/css/classTrainer.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/classDetail.css}" />
+
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/vendors/perfect-scrollbar/perfect-scrollbar.css}"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/vendors/bootstrap-icons/bootstrap-icons.css}"
+    />
+    <link rel="stylesheet" th:href="@{/assets/css/app.css}" />
+    <link
+      rel="shortcut icon"
+      th:href="@{/assets/images/favicon.svg}"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css"
+    />
+
+    <link rel="stylesheet" th:href="@{/assets/css/calendar.css}" />
+
+    <!-- <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css"
+      rel="stylesheet"
+    /> -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/extensions/flatpickr/flatpickr.min.css}"
+    />
+    <link
+      rel="stylesheet"
+      sec:authorize="hasRole('TRAINER')"
+      th:href="@{/assets/css/dashboardTrainer.css}"
+    />
+    <link rel="stylesheet" th:href="@{/assets/compiled/css/dark.css}" />
+  </head>
+
+  <body class="light">
+    <script th:src="@{/assets/js/initTheme.js}"></script>
+    <div id="app">
+      <div th:replace="fragment/sidebar :: sidebar"></div>
+      <div id="main">
+        <header class="mb-3">
+          <a href="#" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+          </a>
+        </header>
+        <section layout:fragment="content"></section>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.js"
+      integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-umd-min.js"></script>
+    <script type="text/javascript" th:src="@{/assets/js/calendar.js}"></script>
+    <script
+      th:src="@{/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"
+    ></script>
+
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- summernote -->
+
+    <!-- <script src=" https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote.min.js "></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script
+      th:src="@{/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js}"
+    ></script>
+    <script th:src="@{/assets/js/main.js}"></script>
+    <!-- <script th:src="@{/assets/js/app.js}"></script> -->
+    <script th:src="@{/assets/compiled/js/app.js}"></script>
+    <script
+      src="https://kit.fontawesome.com/98d02758b8.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script th:src="@{/assets/js/addCSRF.js}"></script>
+    <!-- <script th:src="@{/assets/js/sidebar.js}"></script> -->
+    <script th:src="@{/assets/extensions/flatpickr/flatpickr.min.js}"></script>
+    <script th:src="@{/assets/js/pages/date-picker.js}"></script>
+    <script th:src="@{/assets/js/dark.js}"></script>
+
+    <section layout:fragment="script"></section>
+  </body>
+</html>

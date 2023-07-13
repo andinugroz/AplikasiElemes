@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main}"
+>
+  <header>
+    <title>Dashboard Admin</title>
+  </header>
+  <body>
+    <!-- content -->
+    <section layout:fragment="content">
+      <div class="page-heading">
+        <h3>Dashboard</h3>
+      </div>
+      <div class="page-content">
+        <section class="row">
+          <div class="col-12 col-lg-9">
+            <div class="row" sec:authorize="hasRole('TRAINER')">
+              <div class="col-6 col-lg-3 col-md-6">
+                <div class="card">
+                  <div class="card-body px-3 py-4-5">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="stats-icon purple">
+                          <i
+                            class="bi bi-house-door"
+                            style="margin-right: 13px; margin-bottom: 25px"
+                          ></i>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <h6 class="text-muted font-semibold" id="prog-1-name">
+                          Class
+                        </h6>
+                        <h6 class="font-extrabold mb-0" id="counter-class"></h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 col-md-6">
+                <div class="card">
+                  <div class="card-body px-3 py-4-5">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="stats-icon green">
+                          <i class="fa-solid fa-hourglass-half"></i>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <h6 class="text-muted font-semibold">Segment</h6>
+                        <h6 class="font-extrabold mb-0" id="segment-count"></h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 col-md-6" style="width: 30%">
+                <div class="card">
+                  <div class="card-body px-3 py-4-5">
+                    <div class="row">
+                      <div class="col-md-4" style="padding-right: 24px">
+                        <div class="stats-icon red">
+                          <i class="fa-regular fa-circle-check"></i>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <h6 class="text-muted font-semibold">Segment End</h6>
+                        <h6
+                          class="font-extrabold mb-0"
+                          id="complete-count"
+                        ></h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="row d-flex justify-content-between"
+              sec:authorize="hasRole('ADMIN')"
+            >
+              <div class="col-6 col-lg-3 col-md-6">
+                <div class="card">
+                  <div class="card-body px-3 py-4-5">
+                    <div class="row center">
+                      <div class="col-md-4">
+                        <div class="stats-icon purple">
+                          <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <h6 class="text-muted font-semibold" id="trainer">
+                          Trainer
+                        </h6>
+                        <h6 class="font-extrabold mb-0" id="trainer-count">
+                          10
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 col-md-6">
+                <div class="card">
+                  <div class="card-body px-3 py-4-5">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="stats-icon blue">
+                          <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <h6 class="text-muted font-semibold" id="trainee">
+                          Trainee
+                        </h6>
+                        <h6 class="font-extrabold mb-0" id="trainee-count"></h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 col-md-6">
+                <div class="card">
+                  <div class="card-body px-3 py-4-5">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="stats-icon green">
+                          <i
+                            class="bi bi-house-door"
+                            style="margin-right: 13px; margin-bottom: 25px"
+                          ></i>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <h6 class="text-muted font-semibold">Active Class</h6>
+                        <h6 class="font-extrabold mb-0" id="class-count"></h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3 col-md-6">
+                <div class="card">
+                  <div class="card-body px-3 py-4-5">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="stats-icon green">
+                          <i
+                            class="bi bi-house-door-fill"
+                            style="margin-right: 13px; margin-bottom: 25px"
+                          ></i>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <h6 class="text-muted font-semibold">Finish Class</h6>
+                        <h6 class="font-extrabold mb-0" id="classno-count"></h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12"></div>
+            </div>
+            <div class="row" sec:authorize="hasRole('TRAINER')">
+              <div class="col-12 col-xl-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Calendarss</h4>
+                  </div>
+                  <div class="card-body">
+                    <div id="calendar"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3">
+            <a th:href="@{/trainer/profile}">
+              <div class="card">
+                <div class="card-body py-4 px-5">
+                  <div class="d-flex align-items-center">
+                    <div class="avatar avatar-xl">
+                      <img src="assets/images/faces/1.jpg" alt="Face 1" />
+                    </div>
+                    <div class="ms-3 name">
+                      <h5 class="font-bold" sec:authentication="name"></h5>
+                      <h6
+                        class="text-muted mb-0"
+                        sec:authentication="authorities[0]"
+                      ></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <div class="row" sec:authorize="hasRole('TRAINER')">
+              <div class="card">
+                <div class="card-header text-center">
+                  <h5 class="text-muted">Your Classroom</h5>
+                </div>
+                <div
+                  class="card-body overflow-auto"
+                  style="width: auto; height: 560px"
+                  id="trainer-scroll"
+                >
+                  <div class="trainee-card"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" sec:authorize="hasRole('ADMIN')">
+            <div class="col-12 col-xl-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Calendarss</h4>
+                </div>
+                <div class="card-body">
+                  <div id="calendar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="modal fade" id="events-modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="close"
+                data-bs-dismiss="modal"
+                aria-hidden="true"
+              >
+                &times;
+              </button>
+              <h3 class="modal-title">Event</h3>
+            </div>
+            <div class="modal-body" style="height: 400px"></div>
+            <div class="modal-footer">
+              <a href="#" data-bs-dismiss="modal" class="btn">Close</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div layout:fragment="script">
+      <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+      <script></script>
+      <script
+        th:src="@{/assets/js/myJs/myDashboard.js}"
+        sec:authorize="hasRole('TRAINER')"
+      ></script>
+      <script
+        src="https://cdn.polyfill.io/v2/polyfill.min.js"
+        sec:authorize="hasRole('TRAINER')"
+      ></script>
+
+      <script
+        th:src="@{/assets/js/myJs/adminDashboard.js}"
+        sec:authorize="hasRole('ADMIN')"
+      ></script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main}"
+>
+  <body>
+    <!-- content -->
+    <section layout:fragment="content">
+      <div class="header px-4 py-1 my-2 text-center">
+        <div class="bd">
+          <h2>WELCOME</h2>
+          <h2 sec:authentication="name" style="padding-bottom: 20px"></h2>
+        </div>
+      </div>
+      <div class="row px-5 mt-4">
+        <div class="col-lg-4">
+          <a class="col-content" th:href="@{/admin/class}">
+            <div class="card" id="dashboard" style="border-radius: 20px">
+              <div class="card-body">
+                <div
+                  class="card-header d-flex justify-content-between"
+                  style="background-color: white"
+                >
+                  <h5 class="card-title">Class</h5>
+                  <i
+                    class="fa-solid fa-school-flag school"
+                    style="font-size: 32px"
+                  ></i>
+                </div>
+                <div class="card-content d-flex flex-column align-items-center">
+                  <p class="card-text">Manage Class</p>
+
+                  <!-- <p id="class_sum" class="number"></p> -->
+                  <div class="chart">
+                    <canvas id="doughnutChart"></canvas>
+                  </div>
+                </div>
+              </div></div
+          ></a>
+        </div>
+        <div class="col-lg-4">
+          <a class="col-content" th:href="@{/admin/program}">
+            <div class="card" id="dashboard" style="border-radius: 20px">
+              <div class="card-body">
+                <div
+                  class="card-header d-flex justify-content-between"
+                  style="background-color: white"
+                >
+                  <h5 class="card-title">Program</h5>
+                  <i
+                    class="fa-solid fa-chalkboard-user"
+                    style="font-size: 32px; color: #7f4cbd"
+                  ></i>
+                </div>
+                <div class="card-content d-flex flex-column align-items-center">
+                  <p class="card-text">Manage Program</p>
+
+                  <!-- <p id="class_sum" class="number"></p> -->
+                  <div class="chart">
+                    <canvas id="progChart"></canvas>
+                  </div>
+                </div>
+              </div></div
+          ></a>
+        </div>
+        <div class="col-lg-4">
+          <a class="col-content" th:href="@{/admin/trainer}">
+            <div class="card" id="dashboard" style="border-radius: 20px">
+              <div class="card-body">
+                <div
+                  class="card-header d-flex justify-content-between"
+                  style="background-color: white"
+                >
+                  <h5 class="card-title">Summary</h5>
+                  <!-- <i class="fa-solid fa-users-line" style="font-size: 32px"></i> -->
+                </div>
+                <div class="card-content d-flex flex-column align-items-center">
+                  <div class="chart-all" style="width: 83%">
+                    <canvas id="allChart"></canvas>
+                  </div>
+                </div>
+              </div></div
+          ></a>
+        </div>
+      </div>
+      <div class="row px-5 mt-4">
+        <div class="col-lg-4">
+          <a class="col-content" th:href="@{/admin/trainee}">
+            <div class="card" id="dashboard" style="border-radius: 20px">
+              <div class="card-body">
+                <div
+                  class="card-header d-flex justify-content-between"
+                  style="background-color: white"
+                >
+                  <h5 class="card-title">Trainee</h5>
+                  <i
+                    class="fa-solid fa-user-graduate"
+                    style="font-size: 32px; color: #98bdff"
+                  ></i>
+                </div>
+                <div class="card-content d-flex flex-column align-items-center">
+                  <p class="card-text">Manage trainee</p>
+
+                  <div class="chart">
+                    <canvas id="traineeChart"></canvas>
+                  </div>
+                </div>
+              </div></div
+          ></a>
+        </div>
+        <div class="col-lg-4">
+          <a class="col-content" th:href="@{/admin/trainer}">
+            <div class="card" id="dashboard" style="border-radius: 20px">
+              <div class="card-body">
+                <div
+                  class="card-header d-flex justify-content-between"
+                  style="background-color: white"
+                >
+                  <h5 class="card-title">Trainer</h5>
+                  <i class="fa-solid fa-users-line" style="font-size: 32px"></i>
+                </div>
+                <div class="card-content d-flex flex-column align-items-center">
+                  <p class="card-text">Manage trainer</p>
+
+                  <!-- <p id="class_sum" class="number"></p> -->
+                  <div class="chart">
+                    <canvas id="trainerChart"></canvas>
+                  </div>
+                </div>
+              </div></div
+          ></a>
+        </div>
+      </div>
+    </section>
+    <div layout:fragment="script">
+      <script th:src="@{/js/admin/dashboard.js}"></script>
+    </div>
+  </body>
+</html>

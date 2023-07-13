@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/mainLayout}"
+>
+  <body>
+    <section layout:fragment="content">
+      <!-- ***** Preloader Start ***** -->
+      <div id="free-quote" class="free-quote">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 offset-lg-4">
+              <div
+                class="section-heading wow fadeIn"
+                data-wow-duration="1s"
+                data-wow-delay="0.3s"
+              >
+                <h4>Task</h4>
+                <div class="line-dec"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input type="hidden" class="message" id="message" th:value="${message}" />
+      <div id="services" class="">
+        <div class="container">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-3">
+                    <!-- Button trigger modal -->
+                    <button
+                      type="button"
+                      class="btn btn-warning"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
+                      Info Color
+                    </button>
+                  </div>
+
+                  <div class="overflow-auto col-12" style="height: 500px">
+                    <div class="row task-content"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="detailTask"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="detailTaskLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 fw-bold" id="detailTaskLabel">
+                Detail Task
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="name" class="form-label fw-bold pt-3"
+                      >Task Name</label
+                    >
+                    <p id="detail_task_name"></p>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="segment" class="form-label fw-bold pt-3"
+                      >Segment</label
+                    >
+                    <p id="detail_task_segment"></p>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="deadline" class="form-label fw-bold pt-3"
+                      >Deadline</label
+                    >
+                    <input
+                      type="hidden"
+                      name=""
+                      id="detail_task_deadline_ipt"
+                    />
+                    <p id="detail_task_deadline"></p>
+                  </div>
+                </div>
+                <label for="desc" class="form-label fw-bold pt-3"
+                  >Description</label
+                >
+                <input type="hidden" id="detail_task_id" />
+                <p class="detail_task_desc" id="detail_task_desc"></p>
+              </div>
+            </div>
+            <div class="upload-content"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ***** Header Area End ***** -->
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Info Color
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-body">
+                  <table class="table table-striped hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ket</th>
+                        <th scope="col">Color</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td scope="row">1</td>
+                        <td class="mx-2">Haven't uploaded the file yet</td>
+                        <td>
+                          <button class="btn btn-info btn-sm">Info</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td scope="row">2</td>
+                        <td class="mx-2">Already uploaded file submission</td>
+                        <td>
+                          <button class="btn btn-success btn-sm">Green</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td scope="row">3</td>
+                        <td class="mx-2">Already passed the deadline</td>
+                        <td>
+                          <button class="btn btn-danger btn-sm">Red</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div layout:fragment="script">
+      <script th:src="@{/assets/js/trainee/task/task.js}"></script>
+    </div>
+  </body>
+</html>
